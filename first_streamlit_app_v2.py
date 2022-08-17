@@ -61,16 +61,16 @@ selected_item = st.selectbox("Select Option", ["A", "B"])
 st.write(selected_item)
 #
 # # slider
-# range_var = st.slider("Select range:", 1, 5)
-# st.write(range_var)
+range_var = st.slider("Select range:", 1, 5)
+st.write(range_var)
 #
 # # Buttons
-# if st.button("Clicked!"):
-#     st.write("Clicked just now!")
+st.button("Clicked!"):
+     st.write("Clicked just now!")
 #
 # # Text input
-# info = st.text_input("Enter something", "megalumen sigvec")
-# info1 = st.text_input("Enter something", type="password")
+info = st.text_input("Enter something", "megalumen sigvec")
+info1 = st.text_input("Enter something", type="password")
 #
 # # Text area
 # area_info = st.text_area("My text area", height = 350)
