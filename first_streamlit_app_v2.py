@@ -65,8 +65,8 @@ range_var = st.slider("Select range:", 1, 5)
 st.write(range_var)
 #
 # # Buttons
-st.button("Clicked!"):
-     st.write("Clicked just now!")
+st.button("Clicked!")
+st.write("Clicked just now!")
 #
 # # Text input
 info = st.text_input("Enter something", "megalumen sigvec")
