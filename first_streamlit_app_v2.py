@@ -1,5 +1,8 @@
 import streamlit as st
 import datetime
+from datetime import timedelta
+import calendar
+
 import time
 
 # Title
@@ -16,7 +19,7 @@ st.markdown("<https://index.hu>")
 st.markdown("*I love supporting* **[Szandi](https://telex.hu)**")
 
 # # Success text - green
-st.success("Yeah, it was a success")
+st.sidebar.success("Yeah, it was a success")
 #
 # # Error - red
 st.error("Oops, something went wrong")
@@ -31,7 +34,7 @@ st.info("Something, you have to know")
 st.exception("Dummy error")
 #
 # # help - inbuilt documentation
-st.help(range)
+st.help(type)
 #
 # # write
 a = 10
@@ -57,7 +60,7 @@ state = st.radio("My radio", ("Option A", "Option B "))
 st.write(state)
 #
 # # Select boxes
-selected_item = st.selectbox("Select Option", ["A", "B"])
+selected_item = st.selectbox("Válassz", ["A", "B"])
 st.write(selected_item)
 #
 # # slider
@@ -73,16 +76,20 @@ info = st.text_input("Enter something", "megalumen sigvec")
 info1 = st.text_input("Enter something", type="password")
 #
 # # Text area
-# area_info = st.text_area("My text area", height = 350)
+area_info = st.text_area("My text area", height = 350)
 #
 # # Datetime
-# today = st.date_input("Today: ", datetime.datetime.now())
-#
+currentDate = datetime.date.today()
+today = st.date_input("Today: ", datetime.datetime.now())
+tomorrow = st.date_input("Tomorrow: ", datetime.datetime.now() + timedelta(days=1))
+firstDayOfMonth = st.sidebar.date_input("Hónap első napja" , datetime.date(currentDate.year, currentDate.month, 1))
+lastDayOfMonth = st.sidebar.date_input("Hónap utolsó napja" , datetime.date(currentDate.year, currentDate.month, calendar.monthrange(currentDate.year, currentDate.month)[1]))
+
 # # Displaying json
 # st.json({"name" : "Sha"})
 #
 # # Displaying code
-# st.code("import streamlit")
+#st.code("import streamlit")
 #
 # # spinner
 # # from time import sleep
@@ -107,6 +114,6 @@ with st.expander("Click to expand", expanded = False):
 # st.write("")
 #
 # # Uploading files
-# data = st.file_uploader("Upload image", type= ["jpg", "JPG"])
+data = st.sidebar.file_uploader("Upload image", type= ["jpg", "JPG"])
 #
 #
