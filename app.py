@@ -29,12 +29,12 @@ def _max_width_():
 st.set_page_config(page_icon="✂️", page_title="CSV Wrangler")
 
 # st.image("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/balloon_1f388.png", width=100)
-st.image(
+st.sidebar.image(
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/scissors_2702-fe0f.png",
     width=100,
 )
 
-st.title("CSV Wrangler")
+st.sidebar.title("CSV olvasó")
 
 # st.caption(
 #     "PRD : TBC | Streamlit Ag-Grid from Pablo Fonseca: https://pypi.org/project/streamlit-aggrid/"
@@ -65,7 +65,7 @@ c29, c30, c31 = st.columns([1, 6, 1])
 
 with c30:
 
-    uploaded_file = st.file_uploader(
+    uploaded_file = st.sidebar.file_uploader(
         "",
         key="1",
         help="To activate 'wide mode', go to the hamburger menu > Settings > turn on 'wide mode'",
@@ -73,9 +73,9 @@ with c30:
 
     if uploaded_file is not None:
         file_container = st.expander("Check your uploaded .csv")
-        shows = pd.read_csv(uploaded_file)
-        uploaded_file.seek(0)
-        file_container.write(shows)
+        shows = pd.read_csv(uploaded_file, sep = ',')
+        #uploaded_file.seek(0)
+        #file_container.write(shows)
 
     else:
         st.info(
@@ -132,6 +132,6 @@ with c29:
 with c30:
     CSVButton = download_button(
         df,
-        "File.csv",
+        "File.txt",
         "Download to TXT",
     )
