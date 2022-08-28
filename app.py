@@ -26,6 +26,7 @@ def _max_width_():
         unsafe_allow_html=True,
     )
 
+
 st.set_page_config(page_icon="✂️", page_title="CSV Wrangler")
 
 # st.image("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/balloon_1f388.png", width=100)
@@ -34,7 +35,9 @@ st.sidebar.image(
     width=100,
 )
 
-st.sidebar.title("CSV olvasó")
+st.title("CSV olvasó")
+st.header("Second line")
+st.subheader("Third line")
 
 # st.caption(
 #     "PRD : TBC | Streamlit Ag-Grid from Pablo Fonseca: https://pypi.org/project/streamlit-aggrid/"
@@ -57,7 +60,7 @@ st.sidebar.title("CSV olvasó")
 # -   Add the ability to convert to pivot → filter → export wrangled output (Pablo is due to change AgGrid to allow export of pivoted/grouped data)
 # 	    """
 #     )
-# 
+#
 #     st.text("")
 
 
@@ -73,9 +76,9 @@ with c30:
 
     if uploaded_file is not None:
         file_container = st.expander("Check your uploaded .csv")
-        shows = pd.read_csv(uploaded_file, sep = ',')
-        #uploaded_file.seek(0)
-        #file_container.write(shows)
+        shows = pd.read_csv(uploaded_file)
+        uploaded_file.seek(0)
+        file_container.write(shows)
 
     else:
         st.info(
@@ -132,6 +135,6 @@ with c29:
 with c30:
     CSVButton = download_button(
         df,
-        "File.txt",
+        "File.csv",
         "Download to TXT",
     )
